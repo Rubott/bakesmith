@@ -1,2 +1,2 @@
-# bakesmith
-hnd y1 web and database
+# Bakesmith
+A website made for Year 1 HND Web and Database Design
