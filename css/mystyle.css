@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Calligraffitti");
 /*sticky nav*/
 body {
    display: flex;
@@ -8,10 +7,6 @@ body {
 
  main {
    flex: 1 0 auto;
- }
-
- html {
-   font-family: 'Calligraffitti', cursive;
  }
 
 #title-brand-logo {
