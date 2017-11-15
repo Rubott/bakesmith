@@ -11,5 +11,9 @@ body {
  }
 
  html {
-   font-family: "Calligraffitti", Roboto;
+   font-family: 'Calligraffitti', cursive;
  }
+
+#title-brand-logo {
+  font-family: 'Calligraffitti', cursive;
+}
