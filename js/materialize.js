@@ -4823,6 +4823,15 @@ if (Vel) {
   /*******************
    *  Select Plugin  *
    ******************/
+
+   $(document).ready(function() {
+    $('select').material_select();
+  });//  initialization for dropdown options on order form
+
+  $('#textarea1').val('');
+$('#textarea1').trigger('autoresize'); // auto resize
+
+
   $.fn.material_select = function (callback) {
     $(this).each(function () {
       var $select = $(this);
