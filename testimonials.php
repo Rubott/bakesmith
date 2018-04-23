@@ -1,3 +1,34 @@
+<?php
+   include('config.php');
+   session_start();
+
+    $info = "";
+   
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+      // username and password sent from form 
+      
+      $myusername = mysqli_real_escape_string($conn,$_POST["txtUsername"]);
+      $mypassword = mysqli_real_escape_string($conn,$_POST["txtPassword"]); 
+      
+      $sql = "SELECT userID FROM user WHERE username = '$myusername' and password = '$mypassword'";
+      $result = mysqli_query($conn,$sql);
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      $active = $row["active"];
+      
+      $count = mysqli_num_rows($result);
+      
+      // If result matched $myusername and $mypassword, table row must be 1 row
+		
+      if($count == 1) {
+         $_SESSION["login_user"] = $row["userID"];
+         
+         header("location: dashboard.php");
+      }else {
+         $info = "Your Login Name or Password is invalid";
+      }
+   }
+   mysqli_close($conn);
+?>
 <!DOCTYPE html>
   <html>
     <head>
@@ -123,6 +154,12 @@
                   <li><a href="FAQ.html">FAQ</a></li>
                   <li><a href="testimonials.html">Testimonials</a></li>
                 </ul>
+        <form action = "" method = "post">
+                  <label>UserName  :</label><input type = "text" name = "txtUsername" class = "box"/><br /><br />
+                  <label>Password  :</label><input type = "password" name = "txtPassword" class = "box" /><br/><br />
+                  <input type = "submit" value = " Submit "/><br />
+               </form>
+               <h2><a href="register.php">Register User</a></h2>
                 <!--sidenav END-->
 
         <!--Main START-->
@@ -181,7 +218,7 @@
               <div class="col 14 s6">
                   <h5 class="white-text">Contact</h5>
                   <p class="grey-text text-lighten-4">Phone: 07889904457 <br>
-                  Email: bakesmith@gmail.com</p>
+                  </br>Email: bakesmith@gmail.com</p>
                 </div>
               <div class="col l4 s6">
                 <h5 class="white-text">Links</h5>
